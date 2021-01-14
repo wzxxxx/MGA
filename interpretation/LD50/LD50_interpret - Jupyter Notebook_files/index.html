@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<!-- saved from url=(0078)chrome-extension://kdfieneakcjfaiglcfcgkidlkmlijjnh/writer/index.html#!/writer -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+    
+    <!--<base href="./">--><base href=".">
+    <title>Ginger Extension Writer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="disable-ginger-extension">
+    <link rel="stylesheet" href="chrome-extension://kdfieneakcjfaiglcfcgkidlkmlijjnh/writer/css/style.css">
+</head>
+
+<body ng-app="app" class="ng-scope">
+<!-- uiView: --><ui-view class="ng-scope"><div class="main ng-scope">
+    <!-- ngIf: !main.sidebar.backDisabled --><a class="back-to-writer ng-scope" ng-click="main.returnText()" ng-if="!main.sidebar.backDisabled">
+        <i class="gingericon-arrow-left"></i>
+        <img ng-src="../assets/logo.png" alt="" src="chrome-extension://kdfieneakcjfaiglcfcgkidlkmlijjnh/assets/logo.png">
+        <span class="back-to-writer-text ng-binding"> Back to Website</span>
+    </a><!-- end ngIf: !main.sidebar.backDisabled -->
+    <div class="content">
+        <div class="content-body" ng-class="{&#39;rephrase&#39; : currentState === &#39;main.rephrase&#39;}">
+            <!-- uiView: --><ui-view class="ng-scope"><div class="content-body-container content-body-writer ng-scope">
+    <!-- ngIf: main.session.license===0 --><a href="https://www.gingersoftware.com/online_store/ginger_upgrade?cp=GingerBigWriter-PremiumButtonTop-Chrome&amp;autk=01-1597888027199-9271" target="_blank" class="content-body-premium ng-scope" ng-if="main.session.license===0" ng-click="main.reportPremiumClicked()">Go Premium</a><!-- end ngIf: main.session.license===0 -->
+    <!--<textarea ng-model="main.writer" id="writer" spellcheck="false" placeholder="Please start typing..."></textarea>-->
+    <gdiv class="ginger-module-highlighter ginger-module-highlighter-float ng-empty ng-valid" style="background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);"><gdiv class="ginger-module-highlighter-float-content"></gdiv></gdiv><div ginger-widget-mode="contenteditable" ng-model="main.writer" class="content-body-writer-area ng-pristine ng-untouched ng-valid" id="writer" contenteditable="true" spellcheck="false" placeholder="Please start typing..." style="background: transparent;"></div>
+</div>
+</ui-view>
+
+            <div class="content-body-tools" ng-class="{&#39;disabled&#39;: currentState === &#39;main.rephrase&#39;}">
+                <!-- ngIf: currentState === 'main.rephrase' -->
+                <div class="content-body-tools-list">
+                    <div class="content-body-tools-list-item active" name="synonyms" ng-class="{active:(main.sideMenu === &#39;synonyms&#39; &amp;&amp; currentState !== &#39;main.rephrase&#39;)}"><a href="chrome-extension://kdfieneakcjfaiglcfcgkidlkmlijjnh/writer/" ng-click="currentState !== &#39;main.rephrase&#39; ? main.openSynonymsSideMenu() : false"><i class="gingericon-synonyms"></i> Synonyms</a></div>
+                    <div class="content-body-tools-list-item" name="dictionary" ng-class="{active:(main.sideMenu === &#39;dictionary&#39; &amp;&amp; currentState !== &#39;main.rephrase&#39;)}"><a href="chrome-extension://kdfieneakcjfaiglcfcgkidlkmlijjnh/writer/" ng-click="currentState !== &#39;main.rephrase&#39; ? main.openDictionarySideMenu() : false"><i class="gingericon-dictionary"></i> Dictionary</a></div>
+                    <div class="content-body-tools-list-item" name="translate" ng-class="{active:(main.sideMenu === &#39;translate&#39; &amp;&amp; currentState !== &#39;main.rephrase&#39;)}"><a href="chrome-extension://kdfieneakcjfaiglcfcgkidlkmlijjnh/writer/" ng-click="currentState !== &#39;main.rephrase&#39; ? main.openTranslateSideMenu() : false"><i class="gingericon-translate"></i> Translate</a></div>
+                </div>
+                    <!-- ngIf: main.sideMenu == 'translate' -->
+
+                    <!-- ngIf: main.sideMenu == 'synonyms' --><div class="tool-synonyms ng-scope" ng-if="main.sideMenu == &#39;synonyms&#39;" ng-controller="synonymsController">
+                        <div class="panel-flex">
+                            <div class="panel-flex-row">
+                                <form ng-submit="synonyms.go(false, false);main.reportEvent(&#39;Synonyms&#39;, &#39;Search for synonyms (big writer)&#39;, &#39;Search&#39;, null);main.searchBarReplace.buttonVisible = false;" class="ng-pristine ng-valid">
+                                    <div class="tool-search">
+                                        <input id="synonym-search" autocomplete="off" type="search" ng-model="synonyms.query" placeholder="Search for a word or phrase" class="ng-pristine ng-untouched ng-valid ng-empty">
+                                        <!-- ngIf: main.searchBarReplace.buttonVisible -->
+                                        <!-- ngIf: main.searchBarCopy.buttonVisible -->
+                                        <!-- ngIf: main.searchBarClear.buttonVisible -->
+                                        <button type="submit"><i class="gingericon-search"></i></button>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="panel-flex-row panel-flex-row-full">
+                                <!-- ngIf: !synonyms.result || (!synonyms.result.v && !synonyms.result.n && !synonyms.result.adj && !synonyms.result.adv) --><div ng-if="!synonyms.result || (!synonyms.result.v &amp;&amp; !synonyms.result.n &amp;&amp; !synonyms.result.adj &amp;&amp; !synonyms.result.adv)" class="ng-scope">
+                                    <!-- ngIf: !synonyms.searchTriggered --><div class="tool-nonefound ng-scope" ng-if="!synonyms.searchTriggered">
+                                        <i class="gingericon-click"></i> Select a word or expression or<br> Type directly in the search bar.
+                                    </div><!-- end ngIf: !synonyms.searchTriggered -->
+                                    <!-- ngIf: synonyms.searchTriggered -->
+                                </div><!-- end ngIf: !synonyms.result || (!synonyms.result.v && !synonyms.result.n && !synonyms.result.adj && !synonyms.result.adv) -->
+
+                                <!-- ngIf: synonyms.result && (synonyms.result.v || synonyms.result.n || synonyms.result.adj || synonyms.result.adv) -->
+                            </div>
+
+                        </div>
+                    </div><!-- end ngIf: main.sideMenu == 'synonyms' -->
+
+                    <!-- ngIf: main.sideMenu == 'dictionary' -->
+                </div>
+            </div>
+        </div>
+        <!-- ngIf: currentState !== 'main.rephrase' --><div class="content-foot ng-scope" ng-if="currentState !== &#39;main.rephrase&#39;">
+            <!--<div class="content-foot-stat">Sentence <em>{{stats.count.sentences}}</em></div>-->
+            <!--<div class="content-foot-stat">Words <em>{{stats.count.words}}</em></div>-->
+            <a href="http://www.gingersoftware.com/contactus?email=1ingzero1995@gmail.com" target="_blank" class="content-foot-button">
+                <i class="gingericon-send-feedback"></i>
+            </a>
+            <a class="content-foot-button" ui-sref="main.pd" href="unsafe:chrome-extension://kdfieneakcjfaiglcfcgkidlkmlijjnh/writer/#!/personaldictionary">
+                <i class="gingericon-personaldictionary"></i>
+            </a>
+            <!-- ngIf: currentState==='main.rephrase' -->
+            <!-- ngIf: currentState==='main.writer' && stats.mistakes.spelling > 0 -->
+            <!-- ngIf: currentState==='main.writer' && stats.mistakes.grammar > 0 -->
+            <!-- ngIf: currentState==='main.writer' --><div class="content-foot-stat content-foot-stat-characters ng-scope" ng-if="currentState===&#39;main.writer&#39;" ng-class="{&#39;content-foot-stat-characters-limited&#39;: stats.charCount&gt;main.charLimit}">
+                <em class="ng-binding">0/600</em>
+                <span class="content-foot-stat-characters-warning"> Your text was partially checked.</span>
+                <span class="content-foot-stat-characters-label"> Characters</span>
+            </div><!-- end ngIf: currentState==='main.writer' -->
+            <div class="content-foot-right">
+                <!-- ngIf: currentState==='main.writer' --><a class="content-foot-button rephrase ng-scope" ng-mousedown="main.goToRephrase($event)" ng-if="currentState===&#39;main.writer&#39;">
+                    <span>Rephrase</span>
+                </a><!-- end ngIf: currentState==='main.writer' -->
+                <div class="content-foot-offline"><!-- ngIf: currentState==='main.rephrase' --> <!-- ngIf: main.onlinestatus=='offline' --></div>
+            </div>
+        </div><!-- end ngIf: currentState !== 'main.rephrase' -->
+
+    </div>
+
+
+</ui-view>
+
+<script src="chrome-extension://kdfieneakcjfaiglcfcgkidlkmlijjnh/writer/js/writer.vendor.js"></script>
+<script src="chrome-extension://kdfieneakcjfaiglcfcgkidlkmlijjnh/writer/js/writer.min.js"></script>
+
+
+</body></html>
