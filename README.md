@@ -3,5 +3,5 @@ Multi-task Graph Attention (MGA) is a novel framework to make fully use of avail
 
 ![Image text](https://github.com/wzxxxx/MGA/blob/main/MGA.png)
 
-The overview of the Multi-task Graph Attention framework
+                                    The overview of the Multi-task Graph Attention framework
 
